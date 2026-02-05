@@ -5,6 +5,7 @@ import BioFluidClay from './SimpleForm/BioFluidClay';
 import BioFluidClayDark from './SimpleForm/BioFluidClayDark';
 import HyperBrutalForm from './SimpleForm/HyperBrutalForm';
 import HyperBrutalFormDark from './SimpleForm/HyperBrutalFormDark';
+import CrystalLink from './SimpleForm/CrystalLink';
 
 const collections = [
   {
@@ -38,6 +39,11 @@ const collections = [
     items: [{ id: 'brutal-2', component: HyperBrutalFormDark }],
   },
   {
+    id: 'crystal-link',
+    name: 'Crystal Link',
+    items: [{ id: 'crystal-1', component: CrystalLink }],
+  },
+  {
     id: 'mixed-grid',
     name: 'Mixed Grid',
     items: [
@@ -47,6 +53,7 @@ const collections = [
       { id: 'clay-2a', component: BioFluidClayDark },
       { id: 'brutal-1a', component: HyperBrutalForm },
       { id: 'brutal-2a', component: HyperBrutalFormDark },
+      { id: 'crystal-1a', component: CrystalLink },
     ],
   },
 ];
