@@ -3,6 +3,8 @@ import IgniteCore from './SimpleForm/IgniteCore';
 import PrismConsole from './SimpleForm/PrismConsole';
 import BioFluidClay from './SimpleForm/BioFluidClay';
 import BioFluidClayDark from './SimpleForm/BioFluidClayDark';
+import HyperBrutalForm from './SimpleForm/HyperBrutalForm';
+import HyperBrutalFormDark from './SimpleForm/HyperBrutalFormDark';
 
 const collections = [
   {
@@ -26,6 +28,16 @@ const collections = [
     items: [{ id: 'clay-2', component: BioFluidClayDark }],
   },
   {
+    id: 'hyper-brutal',
+    name: 'Hyper Brutalism',
+    items: [{ id: 'brutal-1', component: HyperBrutalForm }],
+  },
+  {
+    id: 'hyper-brutal-dark',
+    name: 'Hyper Brutalism (Dark)',
+    items: [{ id: 'brutal-2', component: HyperBrutalFormDark }],
+  },
+  {
     id: 'mixed-grid',
     name: 'Mixed Grid',
     items: [
@@ -33,6 +45,8 @@ const collections = [
       { id: 'ignite-2a', component: PrismConsole },
       { id: 'clay-1a', component: BioFluidClay },
       { id: 'clay-2a', component: BioFluidClayDark },
+      { id: 'brutal-1a', component: HyperBrutalForm },
+      { id: 'brutal-2a', component: HyperBrutalFormDark },
     ],
   },
 ];
