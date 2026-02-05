@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import IgniteCore from './SimpleForm/IgniteCore';
 import PrismConsole from './SimpleForm/PrismConsole';
+import BioFluidClay from './SimpleForm/BioFluidClay';
+import BioFluidClayDark from './SimpleForm/BioFluidClayDark';
 
 const collections = [
   {
@@ -14,11 +16,23 @@ const collections = [
     items: [{ id: 'ignite-2', component: PrismConsole }],
   },
   {
+    id: 'bio-fluid-clay',
+    name: 'Bio-Fluid & Clay',
+    items: [{ id: 'clay-1', component: BioFluidClay }],
+  },
+  {
+    id: 'bio-fluid-clay-dark',
+    name: 'Bio-Fluid & Clay (Dark)',
+    items: [{ id: 'clay-2', component: BioFluidClayDark }],
+  },
+  {
     id: 'mixed-grid',
     name: 'Mixed Grid',
     items: [
       { id: 'ignite-1a', component: IgniteCore },
       { id: 'ignite-2a', component: PrismConsole },
+      { id: 'clay-1a', component: BioFluidClay },
+      { id: 'clay-2a', component: BioFluidClayDark },
     ],
   },
 ];

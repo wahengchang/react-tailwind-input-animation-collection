@@ -106,6 +106,95 @@ body {
   animation: ignite-particle 700ms ease-out forwards;
 }
 
+@keyframes clay-typing {
+  0% {
+    box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.2);
+  }
+  60% {
+    box-shadow: inset 0 0 26px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.clay-typing {
+  animation: clay-typing 400ms ease-out;
+}
+
+@keyframes clay-surface-ripple {
+  0% {
+    transform: scale(0.82);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+}
+
+.clay-ripple {
+  animation: clay-surface-ripple 420ms ease-out forwards;
+}
+
+@keyframes clay-flash {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.clay-flash {
+  animation: clay-flash 520ms ease-out forwards;
+}
+
+@keyframes clay-success-ripple {
+  0% {
+    transform: scale(0.45);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.clay-ripple-1 {
+  animation: clay-success-ripple 700ms ease-out forwards;
+}
+
+.clay-ripple-2 {
+  animation: clay-success-ripple 900ms ease-out forwards;
+}
+
+.clay-ripple-3 {
+  animation: clay-success-ripple 1100ms ease-out forwards;
+}
+
+@keyframes clay-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1.01);
+  }
+}
+
+.clay-pop {
+  animation: clay-pop 600ms ease-out forwards;
+}
+
 @keyframes console-breathe {
   0% {
     transform: scale(1);
