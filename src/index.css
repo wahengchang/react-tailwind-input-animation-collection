@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+  --app-bg: #f8fafc;
+  --app-surface: #ffffff;
+  --app-surface-muted: #f1f5f9;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+  --app-border: #e2e8f0;
+  --app-accent: #06b6d4;
+  --app-accent-strong: #0ea5e9;
+ }
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --app-bg: #0b0b0b;
+  --app-surface: #111827;
+  --app-surface-muted: #0f172a;
+  --app-text: #f8fafc;
+  --app-text-muted: #94a3b8;
+  --app-border: #1f2937;
+  --app-accent: #22d3ee;
+  --app-accent-strong: #38bdf8;
+ }
+
 html,
 body,
 #root {
@@ -9,7 +33,9 @@ body,
 }
 
 body {
-  @apply bg-black text-slate-100 antialiased;
+  @apply antialiased;
+  background-color: var(--app-bg);
+  color: var(--app-text);
 }
 
 @keyframes ignite-burst {
