@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import IgniteCore from './SimpleForm/IgniteCore';
 import PrismConsole from './SimpleForm/PrismConsole';
 import BioFluidClay from './SimpleForm/BioFluidClay';
@@ -53,18 +53,55 @@ const collections = [
 
 export default function Collection() {
   const [activeId, setActiveId] = useState(collections[0].id);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') {
+      return 'dark';
+    }
+
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      return storedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  });
   const activeCollection = useMemo(
     () => collections.find((entry) => entry.id === activeId) || collections[0],
     [activeId]
   );
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
-    <div className="min-h-screen bg-[#0b0b0b] text-slate-100">
+    <div className="min-h-screen bg-[color:var(--app-bg)] text-[color:var(--app-text)]">
       <div className="flex min-h-screen">
-        <aside className="w-64 border-r border-white/10">
+        <aside className="w-64 border-r border-[color:var(--app-border)] bg-[color:var(--app-surface)]">
           <div className="sticky top-0 h-screen overflow-auto px-6 py-8">
-            <div className="text-sm font-semibold tracking-[0.3em] text-slate-400">
-              Collection
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--app-text-muted)]">
+                Collection
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setTheme((currentTheme) =>
+                    currentTheme === 'dark' ? 'light' : 'dark'
+                  )
+                }
+                aria-pressed={theme === 'dark'}
+                className={[
+                  'rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] transition',
+                  'border-[color:var(--app-border)] text-[color:var(--app-text-muted)]',
+                  'hover:border-[color:var(--app-accent-strong)] hover:text-[color:var(--app-text)]',
+                ].join(' ')}
+              >
+                {theme === 'dark' ? 'Dark' : 'Light'}
+              </button>
             </div>
             <div className="mt-8 space-y-2">
               {collections.map((collection) => {
@@ -77,14 +114,18 @@ export default function Collection() {
                     className={[
                       'relative w-full truncate rounded-md px-3 py-2 text-left text-sm transition-colors',
                       isActive
-                        ? 'font-semibold text-white'
-                        : 'font-normal text-slate-500 hover:text-slate-200 hover:bg-white/5',
+                        ? 'font-semibold text-[color:var(--app-text)]'
+                        : [
+                            'font-normal text-[color:var(--app-text-muted)]',
+                            'hover:text-[color:var(--app-text)]',
+                            'hover:bg-[color:var(--app-surface-muted)]',
+                          ].join(' '),
                     ].join(' ')}
                   >
                     <span
                       className={[
                         'absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full',
-                        isActive ? 'bg-cyan-400' : 'bg-transparent',
+                        isActive ? 'bg-[color:var(--app-accent)]' : 'bg-transparent',
                       ].join(' ')}
                     />
                     <span className="pl-2">{collection.name}</span>
@@ -97,7 +138,7 @@ export default function Collection() {
 
         <main className="flex-1">
           <div className="px-10 py-12">
-            <h1 className="text-3xl font-semibold text-white">
+            <h1 className="text-3xl font-semibold text-[color:var(--app-text)]">
               {activeCollection.name}
             </h1>
             <div className="mt-10 flex flex-col gap-8">
