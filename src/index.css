@@ -105,3 +105,54 @@ body {
 .ignite-particle {
   animation: ignite-particle 700ms ease-out forwards;
 }
+
+@keyframes console-breathe {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 28px rgba(34, 211, 238, 0.35);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.2);
+  }
+}
+
+.console-breathe {
+  animation: console-breathe 2.2s ease-in-out infinite;
+}
+
+@keyframes ring-spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.ring-spin {
+  animation: ring-spin 4s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.rainbow::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 50% 30%;
+  filter: blur(6px);
+  background-image: linear-gradient(#ff0a7f, #780eff);
+  animation: rotate 4s linear infinite;
+}

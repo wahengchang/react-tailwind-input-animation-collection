@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 
-export default function Test1() {
+export default function PrismConsole() {
   const [value, setValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [phase, setPhase] = useState('idle'); // idle | working | success
   const [showSpinner, setShowSpinner] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     if (!value) return;
@@ -38,24 +39,27 @@ export default function Test1() {
   };
 
   return (
-    <section className="w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
+    <section className="w-full rounded-2xl border border-white/10 bg-[#0b0b0b] shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
       <div className="p-6">
-        <div className="text-xs font-semibold tracking-[0.3em] text-slate-300">
-          Command Input
+        <div className="text-xs font-semibold tracking-[0.3em] text-slate-400">
+          Prism Console
         </div>
         <p className="mt-2 text-sm text-slate-400">
-          Type to charge the system. Your input fuels the launch.
+          A dark console with a neon halo. Charge the input and fire the prism.
         </p>
 
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center">
           <div className="flex-1">
             <div
               className={[
-                'relative rounded-xl border transition-all duration-500',
-                'bg-[#171717]',
+                'relative rounded-full border transition-all duration-500',
+                'bg-[#121218]',
                 isActive
-                  ? 'border-cyan-400/80 shadow-[0_0_30px_rgba(6,182,212,0.35)]'
-                  : 'border-white/10',
+                  ? 'border-fuchsia-300/80 shadow-[0_0_22px_rgba(255,10,127,0.35)]'
+                  : 'border-white/20',
+                isFocused && !isWorking && !isSuccess
+                  ? 'border-fuchsia-300 shadow-[0_0_28px_rgba(255,10,127,0.45)]'
+                  : '',
                 isTyping ? 'animate-pulse' : '',
                 isLocked ? 'opacity-60' : '',
               ].join(' ')}
@@ -63,19 +67,21 @@ export default function Test1() {
               <input
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder="Type to charge the interface..."
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                placeholder="Enter command..."
                 disabled={isLocked}
                 className={[
-                  'w-full bg-transparent px-4 py-3 text-base text-white placeholder:text-slate-500',
+                  'w-full bg-transparent px-5 py-3 text-base text-white placeholder:text-slate-500',
                   'outline-none',
-                  isActive ? 'caret-cyan-300' : 'caret-slate-500',
+                  isActive || isFocused ? 'caret-fuchsia-300' : 'caret-slate-500',
                 ].join(' ')}
               />
               <span
                 className={[
-                  'pointer-events-none absolute inset-0 rounded-xl',
+                  'pointer-events-none absolute inset-0 rounded-full',
                   isActive
-                    ? 'shadow-[inset_0_0_18px_rgba(6,182,212,0.35)]'
+                    ? 'shadow-[inset_0_0_18px_rgba(255,10,127,0.35)]'
                     : '',
                 ].join(' ')}
               />
@@ -83,34 +89,42 @@ export default function Test1() {
           </div>
 
           <div className="flex flex-col items-start gap-2 sm:items-center">
-            <button
-              type="button"
-              onClick={handleIgnite}
-              disabled={!isActive || isLocked}
+            <div
               className={[
-                'group relative inline-flex min-w-[170px] items-center justify-center gap-2 rounded-xl px-5 py-3 overflow-hidden',
-                'text-sm font-semibold transition-all duration-500',
-                isWorking
-                  ? 'bg-cyan-500/80 text-black shadow-[0_0_35px_rgba(6,182,212,0.55)]'
-                  : isSuccess
-                  ? 'bg-emerald-400 text-black shadow-[0_0_35px_rgba(16,185,129,0.6)]'
-                  : isActive
-                  ? 'bg-cyan-400 text-black shadow-[0_0_35px_rgba(6,182,212,0.5)] hover:scale-[1.02]'
-                  : 'bg-[#303030] text-slate-500 scale-95 cursor-not-allowed',
-                isSuccess ? 'ignite-pop' : '',
+                'rainbow relative z-0 inline-flex items-center justify-center rounded-full p-[2px] transition duration-300 active:scale-100 overflow-hidden',
+                'isolate',
+                isActive && !isWorking && !isSuccess ? 'hover:scale-105' : '',
               ].join(' ')}
             >
-              <span
+              <button
+                type="button"
+                onClick={handleIgnite}
+                disabled={!isActive || isLocked}
                 className={[
-                  'pointer-events-none absolute inset-0 transition-opacity duration-200',
-                  isWorking && showSpinner ? 'opacity-100' : 'opacity-0',
+                  'group relative inline-flex min-w-[170px] items-center justify-center gap-2 rounded-full px-6 py-3 overflow-hidden',
+                  'text-sm font-semibold transition-all duration-500',
+                isWorking
+                  ? 'bg-[#2a2a34] text-white shadow-[0_0_35px_rgba(255,10,127,0.35)]'
+                  : isSuccess
+                  ? 'bg-[#2b2238] text-white shadow-[0_0_35px_rgba(120,14,255,0.55)]'
+                  : isActive
+                  ? 'bg-[#1f1f28] text-white shadow-[0_0_35px_rgba(255,10,127,0.45)]'
+                  : 'bg-[#1a1a1a] text-slate-500 scale-95 cursor-not-allowed',
+                  isSuccess ? 'ignite-pop' : '',
+                  isActive && !isWorking && !isSuccess ? 'console-breathe' : '',
                 ].join(' ')}
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-300/20 via-cyan-400/40 to-cyan-300/20" />
-                <span className="absolute inset-0 grid place-items-center">
-                  <span className="h-4 w-4 rounded-full border border-white/30 border-t-white animate-spin" />
+                <span
+                  className={[
+                    'pointer-events-none absolute inset-0 transition-opacity duration-200',
+                    isWorking && showSpinner ? 'opacity-100' : 'opacity-0',
+                  ].join(' ')}
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#ff0a7f]/20 via-[#780eff]/40 to-[#ff0a7f]/20" />
+                  <span className="absolute inset-0 grid place-items-center">
+                    <span className="h-4 w-4 rounded-full border border-white/30 border-t-white animate-spin" />
+                  </span>
                 </span>
-              </span>
               <span
                 className={[
                   'pointer-events-none absolute inset-0 transition-all duration-500',
@@ -141,13 +155,23 @@ export default function Test1() {
                   ))}
                 </span>
               </span>
-              <span
-                className={[
-                  'relative z-10 inline-flex items-center gap-2 transition-all duration-200',
-                  isWorking ? 'opacity-0 scale-95' : 'opacity-100 scale-100',
-                ].join(' ')}
-              >
-                <span>{buttonLabel}</span>
+                <span
+                  className={[
+                    'relative z-10 inline-flex items-center gap-2 transition-all duration-200',
+                    isWorking ? 'opacity-0 scale-95' : 'opacity-100 scale-100',
+                  ].join(' ')}
+                >
+                  <span
+                    className={
+                      isSuccess
+                        ? 'text-white'
+                        : isActive
+                        ? 'text-[#ff0a7f]'
+                        : 'text-slate-400'
+                    }
+                  >
+                    {buttonLabel}
+                  </span>
                 <span
                   className={[
                     'inline-flex transition-transform duration-500',
@@ -157,7 +181,8 @@ export default function Test1() {
                   {isSuccess ? '✓' : '→'}
                 </span>
               </span>
-            </button>
+              </button>
+            </div>
           </div>
         </div>
       </div>

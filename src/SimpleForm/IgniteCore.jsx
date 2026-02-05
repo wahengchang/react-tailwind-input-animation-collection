@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-export default function Test2() {
+export default function IgniteCore() {
   const [value, setValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [phase, setPhase] = useState('idle'); // idle | working | success
@@ -38,13 +38,13 @@ export default function Test2() {
   };
 
   return (
-    <section className="w-full rounded-2xl border border-fuchsia-400/20 bg-gradient-to-br from-[#140d1f] via-[#0f0b18] to-[#0a0a0a] shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
+    <section className="w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
       <div className="p-6">
-        <div className="text-xs font-semibold tracking-[0.3em] text-fuchsia-200/80">
-          Signal Input
+        <div className="text-xs font-semibold tracking-[0.3em] text-slate-300">
+          Command Input
         </div>
-        <p className="mt-2 text-sm text-slate-300">
-          Feed the core. The interface wakes when the signal is present.
+        <p className="mt-2 text-sm text-slate-400">
+          Type to charge the system. Your input fuels the launch.
         </p>
 
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -52,9 +52,9 @@ export default function Test2() {
             <div
               className={[
                 'relative rounded-xl border transition-all duration-500',
-                'bg-[#120f1a]',
+                'bg-[#171717]',
                 isActive
-                  ? 'border-fuchsia-400/80 shadow-[0_0_30px_rgba(217,70,239,0.35)]'
+                  ? 'border-cyan-400/80 shadow-[0_0_30px_rgba(6,182,212,0.35)]'
                   : 'border-white/10',
                 isTyping ? 'animate-pulse' : '',
                 isLocked ? 'opacity-60' : '',
@@ -63,19 +63,19 @@ export default function Test2() {
               <input
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder="Type to energize the core..."
+                placeholder="Type to charge the interface..."
                 disabled={isLocked}
                 className={[
                   'w-full bg-transparent px-4 py-3 text-base text-white placeholder:text-slate-500',
                   'outline-none',
-                  isActive ? 'caret-fuchsia-300' : 'caret-slate-500',
+                  isActive ? 'caret-cyan-300' : 'caret-slate-500',
                 ].join(' ')}
               />
               <span
                 className={[
                   'pointer-events-none absolute inset-0 rounded-xl',
                   isActive
-                    ? 'shadow-[inset_0_0_18px_rgba(217,70,239,0.35)]'
+                    ? 'shadow-[inset_0_0_18px_rgba(6,182,212,0.35)]'
                     : '',
                 ].join(' ')}
               />
@@ -91,12 +91,12 @@ export default function Test2() {
                 'group relative inline-flex min-w-[170px] items-center justify-center gap-2 rounded-xl px-5 py-3 overflow-hidden',
                 'text-sm font-semibold transition-all duration-500',
                 isWorking
-                  ? 'bg-fuchsia-500/80 text-black shadow-[0_0_35px_rgba(217,70,239,0.55)]'
+                  ? 'bg-cyan-500/80 text-black shadow-[0_0_35px_rgba(6,182,212,0.55)]'
                   : isSuccess
                   ? 'bg-emerald-400 text-black shadow-[0_0_35px_rgba(16,185,129,0.6)]'
                   : isActive
-                  ? 'bg-fuchsia-400 text-black shadow-[0_0_35px_rgba(217,70,239,0.5)] hover:scale-[1.02]'
-                  : 'bg-[#2a1f36] text-slate-400 scale-95 cursor-not-allowed',
+                  ? 'bg-cyan-400 text-black shadow-[0_0_35px_rgba(6,182,212,0.5)] hover:scale-[1.02]'
+                  : 'bg-[#303030] text-slate-500 scale-95 cursor-not-allowed',
                 isSuccess ? 'ignite-pop' : '',
               ].join(' ')}
             >
@@ -106,7 +106,7 @@ export default function Test2() {
                   isWorking && showSpinner ? 'opacity-100' : 'opacity-0',
                 ].join(' ')}
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-fuchsia-300/20 via-fuchsia-400/40 to-fuchsia-300/20" />
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-300/20 via-cyan-400/40 to-cyan-300/20" />
                 <span className="absolute inset-0 grid place-items-center">
                   <span className="h-4 w-4 rounded-full border border-white/30 border-t-white animate-spin" />
                 </span>
