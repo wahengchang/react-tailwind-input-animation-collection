@@ -3,12 +3,13 @@
 當你要設計新的 SimpleForm 變體時，請依照本文件操作。目標是在保持一致的使用者行為下，探索不同的視覺與互動風格。
 
 **範圍**
-- 在 `src/SimpleForm/` 建立新的元件，行為需與現有變體一致。
+- 在 `src/SimpleForm/` 建立新的變體資料夾，行為需與現有變體一致。
 - 只能調整樣式、微互動與動態語言。
 - 程式結構需清楚，並與現有元件一致。
 
 **開始方式**
-- 複製 `src/SimpleForm/StarterVariant.jsx` 並改名為你的變體。
+- 複製 `src/SimpleForm/StarterVariant/Light.jsx` 到新變體資料夾作為 `Light.jsx`。
+- 以相同結構新增 `Dark.jsx`，邏輯需完全一致。
 - 更新標題與說明文字以符合主題。
 - 更換色彩、形狀與動態 class，保持狀態邏輯不變。
 
@@ -61,8 +62,8 @@
 - 動態不可遮蔽文字或輸入值。
 
 **交付清單**
-- 在 `src/SimpleForm/` 新增變體元件檔案。
+- 在 `src/SimpleForm/<VariantName>/` 新增變體資料夾。
+- 補齊 `Light.jsx`、`Dark.jsx` 與 `README.md`。
 - 視覺風格需與 IgniteCore、PrismConsole 明顯不同。
 - 行為需完全符合上述規則。
 - 使用函式型元件與 hooks。
-

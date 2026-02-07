@@ -1,22 +1,22 @@
 import { useEffect, useMemo, useState } from 'react';
-import IgniteCore from './SimpleForm/IgniteCore';
-import PrismConsole from './SimpleForm/PrismConsole';
-import BioFluidClay from './SimpleForm/BioFluidClay';
-import BioFluidClayDark from './SimpleForm/BioFluidClayDark';
-import HyperBrutalForm from './SimpleForm/HyperBrutalForm';
-import HyperBrutalFormDark from './SimpleForm/HyperBrutalFormDark';
-import CrystalLink from './SimpleForm/CrystalLink';
+import IgniteCoreLight from './SimpleForm/IgniteCore/Light';
+import PrismConsoleLight from './SimpleForm/PrismConsole/Light';
+import BioFluidClayLight from './SimpleForm/BioFluidClay/Light';
+import BioFluidClayDark from './SimpleForm/BioFluidClay/Dark';
+import HyperBrutalFormLight from './SimpleForm/HyperBrutalForm/Light';
+import HyperBrutalFormDark from './SimpleForm/HyperBrutalForm/Dark';
+import CrystalLinkLight from './SimpleForm/CrystalLink/Light';
 
 const collections = [
   {
     id: 'ignite-core',
     name: 'Ignite Core',
-    items: [{ id: 'ignite-1', componentLight: IgniteCore }],
+    items: [{ id: 'ignite-1', componentLight: IgniteCoreLight }],
   },
   {
     id: 'neon-signal',
     name: 'Neon Signal',
-    items: [{ id: 'ignite-2', componentLight: PrismConsole }],
+    items: [{ id: 'ignite-2', componentLight: PrismConsoleLight }],
   },
   {
     id: 'bio-fluid-clay',
@@ -24,7 +24,7 @@ const collections = [
     items: [
       {
         id: 'clay-1',
-        componentLight: BioFluidClay,
+        componentLight: BioFluidClayLight,
         componentDark: BioFluidClayDark,
       },
     ],
@@ -35,7 +35,7 @@ const collections = [
     items: [
       {
         id: 'brutal-1',
-        componentLight: HyperBrutalForm,
+        componentLight: HyperBrutalFormLight,
         componentDark: HyperBrutalFormDark,
       },
     ],
@@ -43,25 +43,25 @@ const collections = [
   {
     id: 'crystal-link',
     name: 'Crystal Link',
-    items: [{ id: 'crystal-1', componentLight: CrystalLink }],
+    items: [{ id: 'crystal-1', componentLight: CrystalLinkLight }],
   },
   {
     id: 'mixed-grid',
     name: 'Mixed Grid',
     items: [
-      { id: 'ignite-1a', componentLight: IgniteCore },
-      { id: 'ignite-2a', componentLight: PrismConsole },
+      { id: 'ignite-1a', componentLight: IgniteCoreLight },
+      { id: 'ignite-2a', componentLight: PrismConsoleLight },
       {
         id: 'clay-1a',
-        componentLight: BioFluidClay,
+        componentLight: BioFluidClayLight,
         componentDark: BioFluidClayDark,
       },
       {
         id: 'brutal-1a',
-        componentLight: HyperBrutalForm,
+        componentLight: HyperBrutalFormLight,
         componentDark: HyperBrutalFormDark,
       },
-      { id: 'crystal-1a', componentLight: CrystalLink },
+      { id: 'crystal-1a', componentLight: CrystalLinkLight },
     ],
   },
 ];

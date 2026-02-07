@@ -3,12 +3,13 @@
 Use this document when designing a new SimpleForm variant. The goal is to keep identical user behavior across variants while exploring a distinct visual and interaction style.
 
 **Scope**
-- Create a new component in `src/SimpleForm/` with the same behavior as existing variants.
+- Create a new variant folder in `src/SimpleForm/` with the same behavior as existing variants.
 - Change only styling, micro-interactions, and motion language.
 - Keep code structure readable and consistent with the existing components.
 
 **How to start**
-- Copy `src/SimpleForm/StarterVariant.jsx` and rename it for your new variant.
+- Copy `src/SimpleForm/StarterVariant/Light.jsx` into your new variant folder as `Light.jsx`.
+- Duplicate the same structure for `Dark.jsx`, keeping logic identical.
 - Update the title and helper text to match your theme.
 - Replace colors, shapes, and motion classes while keeping all state logic intact.
 
@@ -61,7 +62,8 @@ Use this document when designing a new SimpleForm variant. The goal is to keep i
 - Avoid motion that obscures the label or input value.
 
 **Deliverable checklist**
-- New component file in `src/SimpleForm/`.
+- New variant folder in `src/SimpleForm/<VariantName>/`.
+- `Light.jsx`, `Dark.jsx`, and `README.md` added for the variant.
 - Visual identity clearly different from IgniteCore and PrismConsole.
 - Behavior matches the list above.
 - Uses functional component + hooks only.
