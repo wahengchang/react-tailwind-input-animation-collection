@@ -11,49 +11,57 @@ const collections = [
   {
     id: 'ignite-core',
     name: 'Ignite Core',
-    items: [{ id: 'ignite-1', component: IgniteCoreLight }],
+    items: [{ id: 'ignite-1', componentLight: IgniteCoreLight }],
   },
   {
     id: 'neon-signal',
     name: 'Neon Signal',
-    items: [{ id: 'ignite-2', component: PrismConsoleLight }],
+    items: [{ id: 'ignite-2', componentLight: PrismConsoleLight }],
   },
   {
     id: 'bio-fluid-clay',
     name: 'Bio-Fluid & Clay',
-    items: [{ id: 'clay-1', component: BioFluidClayLight }],
-  },
-  {
-    id: 'bio-fluid-clay-dark',
-    name: 'Bio-Fluid & Clay (Dark)',
-    items: [{ id: 'clay-2', component: BioFluidClayDark }],
+    items: [
+      {
+        id: 'clay-1',
+        componentLight: BioFluidClayLight,
+        componentDark: BioFluidClayDark,
+      },
+    ],
   },
   {
     id: 'hyper-brutal',
     name: 'Hyper Brutalism',
-    items: [{ id: 'brutal-1', component: HyperBrutalFormLight }],
-  },
-  {
-    id: 'hyper-brutal-dark',
-    name: 'Hyper Brutalism (Dark)',
-    items: [{ id: 'brutal-2', component: HyperBrutalFormDark }],
+    items: [
+      {
+        id: 'brutal-1',
+        componentLight: HyperBrutalFormLight,
+        componentDark: HyperBrutalFormDark,
+      },
+    ],
   },
   {
     id: 'crystal-link',
     name: 'Crystal Link',
-    items: [{ id: 'crystal-1', component: CrystalLinkLight }],
+    items: [{ id: 'crystal-1', componentLight: CrystalLinkLight }],
   },
   {
     id: 'mixed-grid',
     name: 'Mixed Grid',
     items: [
-      { id: 'ignite-1a', component: IgniteCoreLight },
-      { id: 'ignite-2a', component: PrismConsoleLight },
-      { id: 'clay-1a', component: BioFluidClayLight },
-      { id: 'clay-2a', component: BioFluidClayDark },
-      { id: 'brutal-1a', component: HyperBrutalFormLight },
-      { id: 'brutal-2a', component: HyperBrutalFormDark },
-      { id: 'crystal-1a', component: CrystalLinkLight },
+      { id: 'ignite-1a', componentLight: IgniteCoreLight },
+      { id: 'ignite-2a', componentLight: PrismConsoleLight },
+      {
+        id: 'clay-1a',
+        componentLight: BioFluidClayLight,
+        componentDark: BioFluidClayDark,
+      },
+      {
+        id: 'brutal-1a',
+        componentLight: HyperBrutalFormLight,
+        componentDark: HyperBrutalFormDark,
+      },
+      { id: 'crystal-1a', componentLight: CrystalLinkLight },
     ],
   },
 ];
@@ -100,14 +108,19 @@ export default function Collection() {
                     currentTheme === 'dark' ? 'light' : 'dark'
                   )
                 }
+                aria-label={`Switch to ${
+                  theme === 'dark' ? 'light' : 'dark'
+                } mode`}
                 aria-pressed={theme === 'dark'}
                 className={[
-                  'rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] transition',
+                  'flex h-10 w-10 items-center justify-center rounded-full border transition',
                   'border-[color:var(--app-border)] text-[color:var(--app-text-muted)]',
                   'hover:border-[color:var(--app-accent-strong)] hover:text-[color:var(--app-text)]',
                 ].join(' ')}
               >
-                {theme === 'dark' ? 'Dark' : 'Light'}
+                <span aria-hidden="true" className="text-lg">
+                  {theme === 'dark' ? '🌙' : '☀️'}
+                </span>
               </button>
             </div>
             <div className="mt-8 space-y-2">
@@ -150,7 +163,10 @@ export default function Collection() {
             </h1>
             <div className="mt-10 flex flex-col gap-8">
               {activeCollection.items.map((item) => {
-                const RowComponent = item.component;
+                const RowComponent =
+                  theme === 'dark' && item.componentDark
+                    ? item.componentDark
+                    : item.componentLight;
                 return <RowComponent key={item.id} />;
               })}
             </div>
