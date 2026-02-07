@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
+import DocLink from '../DocLink';
+import docUrl from './README.md';
 
 export default function BioFluidClayDark() {
   const [value, setValue] = useState('');
@@ -50,12 +52,13 @@ export default function BioFluidClayDark() {
           <p className="mt-2 text-sm text-[#B1A79C]">
             Type to wake the clay.
           </p>
-          <a
-            className="mt-3 inline-flex text-xs font-medium text-[#B1A79C]/80 transition hover:text-[#E7DED2]"
-            href="src/SimpleForm/BioFluidClay/README.md"
-          >
-            Design &amp; technical documentation
-          </a>
+          <DocLink
+            docUrl={docUrl}
+            label="Design &amp; technical documentation"
+            title="Gentle Drop documentation"
+            linkClassName="mt-3 inline-flex text-xs font-medium text-[#B1A79C]/80 transition hover:text-[#E7DED2]"
+            panelClassName="bg-[#151312] text-[#E7DED2]"
+          />
 
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
             <div className="flex-1">
