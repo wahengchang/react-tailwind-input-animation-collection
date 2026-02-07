@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
+import DocLink from '../DocLink';
+import docUrl from './README.md';
 
 export default function PrismConsole() {
   const [value, setValue] = useState('');
@@ -47,6 +49,13 @@ export default function PrismConsole() {
         <p className="mt-2 text-sm text-slate-400">
           A dark console with a neon halo. Charge the input and fire the prism.
         </p>
+        <DocLink
+          docUrl={docUrl}
+          label="Design &amp; technical documentation"
+          title="Prism Console documentation"
+          linkClassName="mt-3 inline-flex text-xs font-medium text-slate-400/80 transition hover:text-slate-200"
+          panelClassName="bg-[#0f0f12] text-slate-200"
+        />
 
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center">
           <div className="flex-1">
