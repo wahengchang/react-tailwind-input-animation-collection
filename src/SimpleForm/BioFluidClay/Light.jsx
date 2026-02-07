@@ -49,6 +49,12 @@ export default function BioFluidClay() {
           <p className="mt-2 text-sm text-[#6C625B]">
             Type to wake the clay.
           </p>
+          <a
+            className="mt-3 inline-flex text-xs font-medium text-[#6C625B]/80 transition hover:text-[#3A332D]"
+            href="src/SimpleForm/BioFluidClay/README.md"
+          >
+            Design &amp; technical documentation
+          </a>
 
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
             <div className="flex-1">

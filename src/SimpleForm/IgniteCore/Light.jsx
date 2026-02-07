@@ -46,6 +46,12 @@ export default function IgniteCore() {
         <p className="mt-2 text-sm text-slate-400">
           Type to charge the system. Your input fuels the launch.
         </p>
+        <a
+          className="mt-3 inline-flex text-xs font-medium text-slate-400/80 transition hover:text-slate-200"
+          href="src/SimpleForm/IgniteCore/README.md"
+        >
+          Design &amp; technical documentation
+        </a>
 
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center">
           <div className="flex-1">
