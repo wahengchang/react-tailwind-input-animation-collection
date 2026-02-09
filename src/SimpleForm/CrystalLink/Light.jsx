@@ -38,7 +38,7 @@ export default function CrystalLink() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden rounded-[28px] border border-white/40 bg-white/10 text-white shadow-[0_24px_80px_rgba(40,60,120,0.35)] backdrop-blur-2xl">
+    <section className="relative w-full overflow-hidden rounded-[28px] border border-[color:var(--crystal-shell-border)] bg-[color:var(--crystal-shell-bg)] text-[color:var(--crystal-shell-text)] shadow-[0_24px_80px_rgba(40,60,120,0.35)] backdrop-blur-2xl">
       <div className="pointer-events-none absolute inset-0">
         <span className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-[#9ED7FF]/30 blur-2xl" />
         <span className="absolute right-6 top-8 h-40 w-40 rounded-full bg-[#C9B8FF]/30 blur-2xl" />
@@ -47,16 +47,18 @@ export default function CrystalLink() {
       </div>
 
       <div className="relative p-6">
-        <div className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70">
+        <div className="text-xs font-semibold uppercase tracking-[0.4em] text-[color:var(--crystal-shell-muted)]">
           Crystal Link
         </div>
-        <p className="mt-2 text-sm text-white/70">Float the signal through glass.</p>
+        <p className="mt-2 text-sm text-[color:var(--crystal-shell-muted)]">
+          Float the signal through glass.
+        </p>
 
         <div className="mt-7 flex flex-col gap-6 sm:flex-row sm:items-center">
           <div className="flex-1">
             <div
               className={[
-                'relative translate-y-[-6px] rounded-2xl border border-white/50 bg-white/15 shadow-[0_18px_50px_rgba(120,160,255,0.25)] backdrop-blur-xl',
+                'relative translate-y-[-6px] rounded-2xl border border-[color:var(--crystal-input-border)] bg-[color:var(--crystal-input-bg)] shadow-[0_18px_50px_rgba(120,160,255,0.25)] backdrop-blur-xl',
                 'transition-all duration-500',
                 isActive
                   ? 'ring-2 ring-[#9ED7FF]/70 shadow-[0_18px_50px_rgba(158,215,255,0.45)]'
@@ -71,9 +73,11 @@ export default function CrystalLink() {
                 placeholder="Type through the glass..."
                 disabled={isLocked}
                 className={[
-                  'w-full bg-transparent px-4 py-3 text-base text-[#F5F7FF] placeholder:text-white/50',
+                  'w-full bg-transparent px-4 py-3 text-base text-[color:var(--crystal-input-text)] placeholder:text-[color:var(--crystal-input-placeholder)]',
                   'outline-none',
-                  isActive ? 'caret-[#C9B8FF]' : 'caret-white/50',
+                  isActive
+                    ? 'caret-[color:var(--crystal-caret)]'
+                    : 'caret-[color:var(--crystal-input-placeholder)]',
                 ].join(' ')}
               />
               <span
@@ -91,15 +95,15 @@ export default function CrystalLink() {
               onClick={handleIgnite}
               disabled={!isActive || isLocked}
               className={[
-                'group relative inline-flex min-w-[180px] items-center justify-center gap-2 rounded-2xl border border-white/50 px-5 py-3',
+                'group relative inline-flex min-w-[180px] items-center justify-center gap-2 rounded-2xl border border-[color:var(--crystal-button-border)] px-5 py-3',
                 'text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-500',
                 isWorking
-                  ? 'bg-white/20 text-white shadow-[0_16px_40px_rgba(120,160,255,0.4)]'
+                  ? 'bg-[color:var(--crystal-button-working-bg)] text-[color:var(--crystal-button-text)] shadow-[0_16px_40px_rgba(120,160,255,0.4)]'
                   : isSuccess
-                  ? 'bg-white/60 text-slate-900 shadow-[0_16px_45px_rgba(201,184,255,0.5)]'
+                  ? 'bg-[color:var(--crystal-button-success-bg)] text-[color:var(--crystal-button-success-text)] shadow-[0_16px_45px_rgba(201,184,255,0.5)]'
                   : isActive
-                  ? 'bg-white/25 text-white shadow-[0_16px_45px_rgba(158,215,255,0.45)] hover:-translate-y-[2px]'
-                  : 'bg-white/10 text-white/40 shadow-[0_10px_30px_rgba(80,100,160,0.3)] cursor-not-allowed',
+                  ? 'bg-[color:var(--crystal-button-active-bg)] text-[color:var(--crystal-button-text)] shadow-[0_16px_45px_rgba(158,215,255,0.45)] hover:-translate-y-[2px]'
+                  : 'bg-[color:var(--crystal-button-idle-bg)] text-[color:var(--crystal-button-muted-text)] shadow-[0_10px_30px_rgba(80,100,160,0.3)] cursor-not-allowed',
                 isSuccess ? 'crystal-success' : '',
               ].join(' ')}
             >
