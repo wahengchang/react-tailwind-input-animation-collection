@@ -12,6 +12,23 @@
   --app-border: #e2e8f0;
   --app-accent: #06b6d4;
   --app-accent-strong: #0ea5e9;
+  --crystal-shell-bg: rgba(255, 255, 255, 0.82);
+  --crystal-shell-border: rgba(148, 163, 184, 0.55);
+  --crystal-shell-text: #0f172a;
+  --crystal-shell-muted: rgba(71, 85, 105, 0.9);
+  --crystal-input-bg: rgba(255, 255, 255, 0.9);
+  --crystal-input-border: rgba(148, 163, 184, 0.5);
+  --crystal-input-text: #0f172a;
+  --crystal-input-placeholder: rgba(15, 23, 42, 0.45);
+  --crystal-caret: #7c3aed;
+  --crystal-button-border: rgba(148, 163, 184, 0.6);
+  --crystal-button-idle-bg: rgba(148, 163, 184, 0.2);
+  --crystal-button-active-bg: rgba(148, 163, 184, 0.35);
+  --crystal-button-working-bg: rgba(148, 163, 184, 0.4);
+  --crystal-button-success-bg: rgba(255, 255, 255, 0.9);
+  --crystal-button-text: #0f172a;
+  --crystal-button-muted-text: rgba(15, 23, 42, 0.45);
+  --crystal-button-success-text: #0f172a;
  }
 
 [data-theme='dark'] {
@@ -24,6 +41,23 @@
   --app-border: #1f2937;
   --app-accent: #22d3ee;
   --app-accent-strong: #38bdf8;
+  --crystal-shell-bg: rgba(15, 23, 42, 0.72);
+  --crystal-shell-border: rgba(255, 255, 255, 0.45);
+  --crystal-shell-text: #f8fafc;
+  --crystal-shell-muted: rgba(248, 250, 252, 0.7);
+  --crystal-input-bg: rgba(255, 255, 255, 0.12);
+  --crystal-input-border: rgba(255, 255, 255, 0.5);
+  --crystal-input-text: #f5f7ff;
+  --crystal-input-placeholder: rgba(248, 250, 252, 0.5);
+  --crystal-caret: #c4b5fd;
+  --crystal-button-border: rgba(255, 255, 255, 0.5);
+  --crystal-button-idle-bg: rgba(255, 255, 255, 0.1);
+  --crystal-button-active-bg: rgba(255, 255, 255, 0.25);
+  --crystal-button-working-bg: rgba(255, 255, 255, 0.2);
+  --crystal-button-success-bg: rgba(255, 255, 255, 0.6);
+  --crystal-button-text: #f8fafc;
+  --crystal-button-muted-text: rgba(248, 250, 252, 0.45);
+  --crystal-button-success-text: #0f172a;
  }
 
 html,
